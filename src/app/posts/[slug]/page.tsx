@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import CustomMDX from '@/components/common/CustomMDX'
+import CustomMDX from '@/components/CustomMDX'
 import Divider from '@/components/common/Divider'
 import PostFooter from '@/components/posts/PostFooter'
 import PostHeader from '@/components/posts/PostHeader'

@@ -4,7 +4,7 @@ import { siteConfig } from '@/constants/config'
 
 import Image from 'next/image'
 import logo from '../../../public/images/logo.png'
-import ThemeSwitch from '../common/ThemeSwitch'
+import ThemeSwitch from '../ThemeSwitch'
 import Title from '../common/Title'
 import GithubIcon from '../icons/GithubIcon'
 

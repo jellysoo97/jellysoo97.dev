@@ -4,7 +4,6 @@ import { useMemo, useState } from 'react'
 import { IPost, ITag, TagEnum } from 'src/types'
 
 import { cn } from '@/utils/cn'
-import { DateFormatTypeEnum, formatDate } from '@/utils/format-date'
 
 import Badge from '../common/Badge'
 import PostTimeline from './PostTimeline'
@@ -17,13 +16,21 @@ type Props = {
 const PostList = ({ posts, tags }: Props) => {
   const [currentTag, setCurrentTag] = useState<string>(TagEnum.All)
 
-  const tagPosts = useMemo(
-    () =>
+  const postsByTagYear = useMemo(() => {
+    const postsByTag =
       currentTag === TagEnum.All
         ? posts
-        : posts.filter((post) => post.frontmatter.tag === currentTag),
-    [currentTag]
-  )
+        : posts.filter((post) => post.frontmatter.tag === currentTag)
+    let postsByYear: Record<number, IPost[]> = {}
+
+    postsByTag.forEach((post) => {
+      const postYear = post.frontmatter.date.getFullYear()
+      if (postsByYear[postYear]) postsByYear[postYear].push(post)
+      else postsByYear[postYear] = [post]
+    })
+
+    return postsByYear
+  }, [currentTag])
 
   return (
     <>
@@ -38,32 +45,7 @@ const PostList = ({ posts, tags }: Props) => {
         ))}
       </div>
 
-      <ul>
-        {tagPosts.map(({ frontmatter }, index) => {
-          const currentPostYear = formatDate(
-            frontmatter.date,
-            DateFormatTypeEnum.YearOnly
-          )
-          const prevPostYear =
-            index === 0
-              ? currentPostYear
-              : formatDate(
-                  tagPosts[index - 1].frontmatter.date,
-                  DateFormatTypeEnum.YearOnly
-                )
-          const isLastPostOfYear =
-            index === 0 || currentPostYear !== prevPostYear
-
-          return (
-            <PostTimeline
-              key={frontmatter.title}
-              frontmatter={frontmatter}
-              year={currentPostYear}
-              isLastPostOfYear={isLastPostOfYear}
-            />
-          )
-        })}
-      </ul>
+      <PostTimeline postsByTagYear={postsByTagYear} />
     </>
   )
 }
