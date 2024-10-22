@@ -6,6 +6,7 @@ export const tagLabel: Record<string, string> = {
   [TagEnum.TroubleShooting]: '트러블슈팅',
   [TagEnum.Project]: '프로젝트',
   [TagEnum.Network]: '네트워크',
+  [TagEnum.CA]: '컴퓨터구조',
 }
 
 export const DEFAULT_TAG_COLOR = '#e34c26'
@@ -15,6 +16,7 @@ export const tagColor: Record<string, string> = {
   [TagEnum.TroubleShooting]: DEFAULT_TAG_COLOR,
   [TagEnum.Project]: '#f472b6',
   [TagEnum.Network]: '#9BCF53',
+  [TagEnum.CA]: '#c2c2c2',
   // [TagEnum.Nextjs]: '#000000',
   // [TagEnum.ModernJavascriptDeepDive]: '',
   // [TagEnum.Css]: '#563d7c',

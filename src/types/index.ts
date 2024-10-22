@@ -5,6 +5,7 @@ export enum TagEnum {
   Blog = 'blog',
   Project = 'project',
   Network = 'network',
+  CA = 'ca',
 }
 
 export interface ITag {
