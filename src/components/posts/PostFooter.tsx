@@ -23,7 +23,7 @@ const PostFooter = ({ frontmatter, prevPost, nextPost }: Props) => {
             <LeftChevronIcon className="text-secondary" />
             <div>
               <p className="text-secondary text-size-small">이전글</p>
-              <p className="w-[250px]">
+              <p className="text-nowrap text-size-small">
                 [{tagLabel[prevPost.frontmatter.tag]}]{' '}
                 {prevPost.frontmatter.title}
               </p>
@@ -39,7 +39,7 @@ const PostFooter = ({ frontmatter, prevPost, nextPost }: Props) => {
           >
             <div className="text-right">
               <p className="text-secondary text-size-small">다음글</p>
-              <p className="w-[250px]">
+              <p className="text-nowrap text-size-small">
                 [{tagLabel[nextPost.frontmatter.tag]}]{' '}
                 {nextPost.frontmatter.title}
               </p>
