@@ -11,8 +11,8 @@ const Divider = ({ direction = 'horizontal', className, ...props }: Props) => {
     <div
       {...props}
       className={cn(
-        'bg-secondary',
-        direction === 'horizontal' ? 'w-full h-[1px]' : 'w-[1px] h-full',
+        'bg-neutral-300 dark:bg-neutral-700',
+        direction === 'horizontal' ? 'h-[1px] w-full' : 'h-full w-[1px]',
         className
       )}
     />

@@ -3,13 +3,17 @@ import { getPosts } from './get-posts'
 export const getPost = async (url: string) => {
   const posts = await getPosts()
   const currentPost = posts.find((post) => post.frontmatter.url === url)
-  const sameTagPosts = posts.filter(
-    (post) => post.frontmatter.tag === currentPost?.frontmatter.tag
-  )
+
+  if (!currentPost) {
+    return { currentPost: null, prevPost: null, nextPost: null }
+  }
+
+  const currentIndex = posts.indexOf(currentPost)
 
   return {
     currentPost,
-    prevPost: posts[sameTagPosts.indexOf(currentPost!) + 1] || null,
-    nextPost: posts[sameTagPosts.indexOf(currentPost!) - 1] || null,
+    prevPost:
+      currentIndex === posts.length - 1 ? null : posts[currentIndex + 1],
+    nextPost: currentIndex === 0 ? null : posts[currentIndex - 1],
   }
 }

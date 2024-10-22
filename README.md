@@ -1,4 +1,4 @@
-## jellysoo97-wiki
+## jellysoo97.dev
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)

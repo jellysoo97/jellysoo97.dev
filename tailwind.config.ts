@@ -54,7 +54,7 @@ const config: Config = {
           '@apply text-neutral-700 dark:text-neutral-300': '',
         },
         '.text-secondary': {
-          '@apply text-neutral-600 dark:text-neutral-350': '',
+          '@apply text-neutral-500 dark:text-neutral-350': '',
         },
         '.text-yellow': {
           '@apply text-yellow-400 dark:text-yellow-500': '',

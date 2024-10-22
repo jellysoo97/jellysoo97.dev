@@ -23,7 +23,7 @@ const parseMDX = async (fileName: string): Promise<IPost> => {
   }
 }
 
-export const getPosts = async () => {
+export const getPosts = async (): Promise<IPost[]> => {
   const postFileNames = fs
     .readdirSync(path.join(process.cwd(), 'posts'))
     .filter((fileName) => fileName.includes('.mdx'))

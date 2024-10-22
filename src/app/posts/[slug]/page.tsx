@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import CustomMDX from '@/components/common/CustomMDX'
+import CustomMDX from '@/components/CustomMDX'
 import Divider from '@/components/common/Divider'
 import PostFooter from '@/components/posts/PostFooter'
 import PostHeader from '@/components/posts/PostHeader'
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const { title, description, date, url, tag } = post.frontmatter
-  const DEFAULT_IMAGE = '/images/og.png'
+  const DEFAULT_IMAGE = '/images/og/default.png'
 
   return {
     title,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: `${siteConfig.url.blog}/posts/${url}`,
       tags: tag,
-      images: [DEFAULT_IMAGE],
+      images: [siteConfig.og[tag], DEFAULT_IMAGE],
       authors: siteConfig.author.name,
       publishedTime: date.toISOString().split('T')[0],
       modifiedTime: date.toISOString().split('T')[0],
