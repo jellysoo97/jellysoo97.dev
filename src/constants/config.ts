@@ -16,7 +16,7 @@ export const siteConfig: IConfig = {
   url: {
     author: 'https://github.com/jellysoo97',
     github: 'https://github.com/jellysoo97/jellysoo97.dev',
-    blog: 'https://jellysoo97.dev.vercel.app',
+    blog: 'https://jellysoo97-dev.vercel.app',
   },
   og: {
     javascript: '/images/og/javascript.png',
