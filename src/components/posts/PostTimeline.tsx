@@ -22,9 +22,9 @@ const PostTimeline = ({ postsByTagYear }: Props) => {
 
           <ul>
             {posts.map(({ frontmatter }) => (
-              <li key={frontmatter.url}>
+              <li key={frontmatter.url} className="mb-3">
                 <Link
-                  href={frontmatter.url}
+                  href={`/posts/${frontmatter.url}`}
                   className="flex items-center gap-x-2"
                 >
                   <span className="text-secondary text-size-small">
