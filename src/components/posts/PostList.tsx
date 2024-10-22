@@ -21,7 +21,7 @@ const PostList = ({ posts, tags }: Props) => {
       currentTag === TagEnum.All
         ? posts
         : posts.filter((post) => post.frontmatter.tag === currentTag)
-    let postsByYear: Record<number, IPost[]> = {}
+    const postsByYear: Record<number, IPost[]> = {}
 
     postsByTag.forEach((post) => {
       const postYear = post.frontmatter.date.getFullYear()

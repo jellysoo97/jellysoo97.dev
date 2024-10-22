@@ -7,8 +7,8 @@ import { tagLabel } from '@/constants/index'
 
 type Props = {
   frontmatter: IFrontmatter
-  prevPost: IPost
-  nextPost: IPost
+  prevPost: IPost | null
+  nextPost: IPost | null
 }
 
 const PostFooter = ({ frontmatter, prevPost, nextPost }: Props) => {
