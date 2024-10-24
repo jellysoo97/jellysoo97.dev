@@ -1,11 +1,13 @@
 export enum TagEnum {
   All = 'all',
   JavaScript = 'javascript',
-  TroubleShooting = 'troubleshooting',
+  TroubleShooting = 'ts',
   Blog = 'blog',
   Project = 'project',
   Network = 'network',
   CA = 'ca',
+  Web = 'web',
+  React = 'react',
 }
 
 export interface ITag {
