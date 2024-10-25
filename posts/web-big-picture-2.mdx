@@ -1,0 +1,202 @@
+---
+title: 웹 프론트엔드 개발의 큰 그림 - 2
+description: 아는게 아는게 아니야
+date: 2024-01-15 01:14:42
+tag: web
+---
+
+개발을 하다보면 기술의 원리와 필요성을 알지 못한 채 실용적인 사용법만 파고드는 경우가 있다.
+보통 트러블슈팅 과정에서 이러한 공부법의 한계가 들어났다.
+'이렇게 하니까 그냥 되던데?'스러운 얼렁뚱땅 트러블슈팅을 하다보니 이해했다는 확신이 들지 않았다.
+웹 프론트엔드 개발의 전반적인 과정을 돌아보면서 몰랐던 혹은 어렴풋이 알고있던 부분들을 캐치하고 채워나갈 필요성을 느꼈다.
+프로그래밍 언어부터 라이브러리까지, 자주 쓰던 기술들의 동작 원리를 체크해보고자 한다.
+
+## 웹 프론트 개발 정리
+
+우선 웹 프론트엔드 개발에 필요한 지식을 4가지로 나눈 다면 다음과 같다고 생각한다.
+
+- 기초: HTML, CSS, JS, (TS)
+- 라이브러리, 프레임워크: React, (Vue), (Next.js)
+- 데이터 통신(api 호출): REST(axios, tanstack-query, swr), GraphQL
+- 상태관리: Context API, Zustand, Redux
+- +그 외: 테스트(Storybook, Jest, Vitest, MSW), 버전 관리 시스템(Git) 등등
+
+자주 사용하는 기술 위주로 미흡한 부분을 채워나가고자 한다.
+
+### HTML
+
+> 1. 문서의 구조
+
+모든 웹페이지에는 필수 구성 요소들이 있다. 누락되어도 렌더링하는데 문제가 없긴 하지만, 항상 포함된다.
+웹페이지는 크게 `<head>`와 `<body>`로 나눌 수 있다.
+
+- `<head>`의 구성요소
+  - 문자 인코딩
+  - 문서 제목
+  - 메타데이터
+  - `<link>`: CSS, favicon, manifest
+- `<body>`의 구성요소
+  - `<script>`: 자바스크립트 모듈, 브라우저 렌더링 과정과 스크립트 태그 위치의 연관성, `defer`와 `async` 속성
+  - HTML 태그
+
+> 2. 시맨틱 HTML
+
+- 시맨틱 태그란
+- 코드 블록 콘텐츠의 의미를 나타낼 수 있는가, 의미가 없는 `<div>`, `<span>` 태그를 남용했나
+- SEO
+
+> 3. 다양한 태그와 태그별 속성
+
+- 태그: 텍스트(제목, 인용문, 단락), 목록, 링크, 테이블, form, 이미지, 오디오 및 동영상
+- 속성: 태그별 속성, 커스텀 속성(`data-`)
+
+<hr />
+
+### CSS
+
+> 1. 박스 모델
+
+- content box, border box
+- margin, padding
+
+> 2. 선택자와 상속
+
+- HTML 태그, 클래스, id, 속성, 가상 요소
+- 스타일 상속
+
+> 3. CSS 트리거 리스트
+
+- layout
+- paint
+- composite
+- 렌더링 성능
+
+> 4. 레이아웃과 사이즈
+
+- display, flex, grid
+- width, max-width, min-width, height, max-height, min-height
+- 단위: px, em, rem, vh, vw
+
+> 5. 그 밖에 여러 속성
+
+- position(relative, absolute, fixed, sticky), z-index, border, overflow, transform, transition, white-space
+
+> 6. CSS 작성 방법
+
+- CSS-in-JS: styled-components, emotion
+- CSS Modules
+- 그 외 프레임워크: TailwindCSS(utility-first)
+
+<hr />
+
+### JavaScript
+
+> 1. 변수
+
+- 변수 선언, 초기화, 할당
+- var, let, const 키워드
+- 호이스팅
+- 자바스크립트의 메모리 관리
+
+> 2. 데이터 타입
+
+- 원시 타입과 객체 타입
+- 빌트인 객체
+- 타입 변환: 암시적, 명시적
+
+> 3. 함수
+
+- 함수 선언문과 표현식
+- 일급 객체
+
+> 4. 실행 컨텍스트
+
+- 코드의 평가와 실행
+- 실행 컨텍스트의 역할
+
+> 5. 스코프와 클로저
+
+- 스코프의 종류
+- 스코프 체인
+- 렉시컬 스코프
+- 클로저와 렉시컬 환경
+
+> 6. this 키워드
+
+- 호출 방식에 따른 사용
+- call, apply, bind
+
+> 7. 프로토타입
+
+- 상속과 프로토타입
+
+> 8. 이벤트
+
+- 이벤트 드리븐
+- 이벤트 객체
+- 이벤트 핸들러
+
+> 9. 비동기 처리
+
+- 싱글 스레드, 멀티 스레드
+- 이벤트 루프와 테스크 큐
+- cf) 블로킹, 논블로킹
+
+> 10. Promise
+
+- 프로미스의 등장배경: 비동기 처리 콜백 패턴의 한계
+- 프로미스 활용
+- async/await
+
+> 11. 자바스크립트 모듈
+
+- CommonJS, ESM
+
+<hr />
+
+### React
+
+> 1. 컴포넌트
+
+- 리액트의 작동 원리
+- 컴포넌트의 props와 state
+- 가상 돔
+- 서버 컴포넌트: RSC
+
+> 2. 렌더링
+
+- CSR, SSR, SSG, SPA, MPA
+- 컴포넌트 생명주기
+- list와 key
+- 렌더링 최적화
+
+> 3. Hooks
+
+- useState, useEffect
+- useMemo, useCallback, useRef
+- 커스텀 훅
+
+> 4. 상태관리
+
+- 상태관리 프로세스의 원리
+- Context API, useContext
+- Zustand
+
+> 5. api 호출
+
+- 리액트의 데이터 패칭 방법
+- axios + Tanstack Query: 데이터 패칭, 비동기 상태 관리
+
+<hr />
+
+### TypeScript
+
+<br />
+
+## 참고
+
+1. Frontend Developer Roadmap [https://roadmap.sh/frontend](https://roadmap.sh/frontend)
+2. JavaScript Roadmap [https://roadmap.sh/javascript](https://roadmap.sh/javascript)
+3. React Roadmap [https://roadmap.sh/react](https://roadmap.sh/react)
+4. Learn HTML [https://web.dev/learn/html](https://web.dev/learn/html)
+5. Learn CSS [https://web.dev/learn/css?hl=ko](https://web.dev/learn/css?hl=ko)
