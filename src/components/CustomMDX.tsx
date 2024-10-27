@@ -24,7 +24,7 @@ function CustomCode({ children, ...props }: React.ComponentProps<'code'>) {
 }
 
 function CustomImg(props: React.ComponentProps<'img'>) {
-  return <img className="mx-auto max-h-[500px]" {...props} />
+  return <img className="mx-auto max-h-[400px]" {...props} />
 }
 
 function createHeading(level: number) {
