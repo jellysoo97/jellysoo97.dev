@@ -39,9 +39,11 @@ export const getPosts = async (): Promise<IPost[]> => {
     })
   )
     .then((posts) =>
-      posts.sort(
-        (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime()
-      )
+      posts
+        .filter((post) => !post.frontmatter.draft)
+        .sort(
+          (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime()
+        )
     )
     .catch(() => [])
 

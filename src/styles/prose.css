@@ -102,7 +102,7 @@
 
 .prose blockquote {
   @apply border-l-4 border-yellow-400 not-italic dark:border-yellow-500;
-  @apply rounded-md bg-neutral-150 p-4 text-primary dark:bg-neutral-700;
+  @apply rounded-md bg-neutral-150 px-4 py-2 text-primary dark:bg-neutral-700;
 }
 
 .prose
@@ -124,13 +124,19 @@
   }
 }
 
+.prose code span .sh__token--entity {
+  @apply text-base text-red-500 dark:text-red-400 !important;
+}
+
 .prose li:has(code) code span .sh__token--class,
 .prose li:has(code) code span .sh__token--sign,
+.prose li:has(code) code span .sh__token--entity,
+.prose li:has(code) code span .sh__token--keyword,
 .prose li:has(code) code span .sh__token--property,
 .prose li:has(code) code span .sh__token--identifier,
 .prose li:has(code) code span .sh__token--string,
 .prose li:has(code) code span .sh__token--comment {
-  @apply text-base text-red-500 dark:text-red-400 !important;
+  @apply font-serif text-base text-red-500 dark:text-red-400 !important;
 }
 
 .prose
