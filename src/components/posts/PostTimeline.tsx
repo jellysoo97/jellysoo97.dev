@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { IPost } from 'src/types'
 
-import { tagLabel } from '@/constants/index'
 import { DateFormatTypeEnum, formatDate } from '@/utils/format-date'
+import Badge from '../common/Badge'
 import Divider from '../common/Divider'
 
 type Props = {
@@ -33,7 +33,10 @@ const PostTimeline = ({ postsByTagYear }: Props) => {
                       DateFormatTypeEnum.MonthAndDayWithDot
                     )}
                   </span>
-                  [{tagLabel[frontmatter.tag]}] {frontmatter.title}
+                  <div className="flex items-center gap-x-2">
+                    <Badge type="tag" content={frontmatter.tag} />
+                    <h3>{frontmatter.title}</h3>
+                  </div>
                 </Link>
               </li>
             ))}

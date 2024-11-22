@@ -89,7 +89,7 @@ const config: Config = {
         },
         // list
         '.parent-ul': {
-          'list-style-type': "'◻️'",
+          'list-style-type': "'□'",
           'padding-inline-start': '1ch',
           '@apply pl-8': '',
         },
