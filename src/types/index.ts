@@ -8,6 +8,7 @@ export enum TagEnum {
   CA = 'ca',
   Web = 'web',
   React = 'react',
+  HTML = 'html',
 }
 
 export interface ITag {

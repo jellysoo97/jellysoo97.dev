@@ -5,14 +5,14 @@
 @import 'prose.css';
 
 @font-face {
-  font-family: 'SCDream';
-  src: url('../../public/fonts/SCDream3.woff') format('woff');
+  font-family: 'Pretendard';
+  src: url('../../public/fonts/Pretendard-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'SCDream Bold';
-  src: url('../../public/fonts/SCDream5.woff') format('woff');
+  font-family: 'Pretendard Bold';
+  src: url('../../public/fonts/Pretendard-SemiBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -56,8 +56,8 @@
     --sh-comment: #a19595;
 
     /* fonts */
-    --font-serif: 'SCDream';
-    --font-serif-bold: 'SCDream Bold';
+    --font-serif: 'Pretendard';
+    --font-serif-bold: 'Pretendard Bold';
     --font-mono: 'Cutive Mono';
 
     /* layout */
