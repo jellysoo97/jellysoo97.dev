@@ -14,6 +14,18 @@
   @apply my-2;
 }
 
+.prose figure {
+  @apply my-2;
+}
+
+.prose p:has(img) {
+  @apply mb-0;
+}
+
+.prose figcaption {
+  @apply mt-0 text-center;
+}
+
 .prose h2 {
   @apply mb-4 rounded-md bg-yellow-block-light px-2 py-1 font-serif-bold text-2xl text-primary dark:bg-yellow-block-dark;
 }
