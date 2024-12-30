@@ -1,0 +1,180 @@
+---
+title: 웹 프론트엔드 개발 overview
+description: 웹 프론트엔드 개발의 큰 흐름 되짚어보기
+date: 2024-01-30 23:36:35
+tag: web
+---
+
+## 들어가며
+
+웹 프론트엔드는 웹 애플리케이션을 통해
+
+1. 사용자에게 다양한 콘텐츠를 제공하고
+2. 사용자가 요청한대로 동작하면서 사용자와 상호작용한다.
+
+이 글에서는 웹 애플리케이션 개발의 깊은 세부 내용보다는 전체적인 흐름과 필요한 개념들을 정리하고자 한다.
+
+## 1. 웹 애플리케이션 만들기
+
+웹 애플리케이션은 HTML + CSS + JavaScript로 이루어진다.
+
+1. `HTML` 로 구조를 짜고
+2. `CSS` 로 디자인 요소를 적용하며
+3. `JavaScript` 로 동적 제어를 한다. ex) 마우스 클릭, 타이핑, 데이터 요청 등
+
+순수 HTML, CSS, JS만으로 효율적인 웹 애플리케이션 개발은 어렵다.
+
+그래서 보통 라이브러리나 프레임워크를 활용한다. 대표적인 예로 React가 있다.
+
+### 주요 개념
+
+- HTML: DOM(Document Object Model), 시맨틱 태그
+- CSS: 박스 모델, Flexbox와 Grid 레이아웃, 미디어 쿼리
+- JS: 이벤트, 비동기 처리(`Promise`, `async/await`), DOM 조작(`createElement`, `querySelector`), `TypeScript`
+- 웹 접근성, SEO(Search Engine Optimization)
+- React
+  - 컴포넌트 라이프사이클, Virtual DOM
+  - hooks: 리액트 훅, 커스텀 훅
+  - 상태 관리
+  - 클라이언트/서버 컴포넌트
+  - 라우팅
+
+## 2. 번들링
+
+웹 애플리케이션을 개발한 후, 이를 사용자에게 제공하려면 서버에 배포해야 한다.
+
+하지만 raw 개발 파일은 용량이 크고 성능 최적화가 필요하다. 이 문제를 해결하기 위해 번들링을 한다.
+
+번들링은 여러 파일을 하나로 결합하는 작업이다.
+
+이를 통해 웹 애플리케이션의 모듈 간 의존성을 정리하고, 최적화된 파일을 생성한다.
+
+<br />
+
+번들링을 하면 다음과 같은 이점이 있다.
+
+1. 성능 향상: 코드를 최적화하고 적은 수의 파일로 압축하기 때문에 용량이 줄어들어 실행 속도, 로딩 속도가 향상된다.
+2. 보안 강화: 번들링된 파일이 브라우저에 노출되기 때문에 원본 코드에는 접근할 수 없다. 코드를 임의로 조작하는게 불가능하다.
+3. 코드 최적화: 불필요한 공백, 주석등을 제거함으로써 파일 크기를 최소화할 수 있다.
+
+### 주요 개념
+
+- 모듈 시스템: `CommonJS`, `ES Modules(ESM)`
+- 번들링 툴: `Webpack`, Rollup, Parcel + `Vite`
+- Transpiling, Polyfill
+- 코드 분할, 트리 쉐이킹, 소스 압축, 소스맵
+
+## 3. 배포와 웹 애플리케이션 구조
+
+번들링된 파일을 서버에 배포하여 사용자에게 제공한다.
+
+이때, 배포 방식과 웹 애플리케이션 구조를 설계하는 것이 중요하다.
+
+<br />
+
+가장 기본적인 웹 애플리케이션 구조는 Client - Server 구조이다.
+Database까지 3-Tier구조라고 하기도 한다.
+
+<figure>
+  <img
+    src="/images/posts/web/fe-overview/1.png"
+    alt="web architecture 1"
+    width="500px"
+    style={{ margin: '0 auto' }}
+  />
+  <figcaption>출처: https://www.youtube.com/watch?v=sDlCSIDwpDs</figcaption>
+</figure>
+
+해당 구조도 여러 방식으로 나뉠 수 있다.
+서버를 2개만 운영하거나(client&server / db 또는 client / server&db) 각각을 하나의 서버(3개)로 운영할 수 있다.
+
+<br />
+
+<figure>
+  <img
+    src="/images/posts/web/fe-overview/3.png"
+    alt="web architecture 3"
+    width="500px"
+    style={{ margin: '0 auto' }}
+    s
+  />
+  <figcaption>출처: pxd 블로그</figcaption>
+</figure>
+
+또한 웹 서버와 웹 애플리케이션 서버(WAS)를 구분하기도 한다.
+
+<br />
+
+<figure>
+  <img
+    src="/images/posts/web/fe-overview/2.png"
+    alt="web architecture 2"
+    width="500px"
+    style={{ margin: '0 auto' }}
+    s
+  />
+  <figcaption>출처: https://www.youtube.com/watch?v=sDlCSIDwpDs</figcaption>
+</figure>
+
+더 나아가 서버를 여러 개의 마이크로서비스로 쪼갤 수도 있다. 이를 MSA(Micro Service Architecture)라고 한다.
+WAS 뿐만 아니라 클라이언트 서비스도 규모가 커지면 여러 개의 마이크로서비스로 쪼개기도 한다.
+
+<br />
+
+중요한 건 웹앱의 성격과 요구사항에 따라 배포 방식을 선택해야 한다는 것이다.
+
+정적/동적 웹인지, 확장 가능성이 있는지, 성능이 중요한지 등에 따라 적합한 배포 플랫폼이 다르다.
+
+### 주요 개념
+
+- 렌더링 방식: `CSR`, `SSR`, `SSG` , `ISR`
+- 웹앱 구조: `SPA`, `MPA` , Hybrid
+- 웹 서버와 WAS: `Nginx` , Apache / Node.js, Spring Boot
+- 컨테이너 기반 구조: `Docker`, Kubernetes
+- CI/CD
+- 보안: HTTPS, SSL/TLS
+
+## 4. 브라우저
+
+사용자가 브라우저 주소창에 URL을 입력하면 브라우저는 서버로부터 HTML, CSS, JS와 같은 리소스를 요청하고 렌더링 과정을 통해 화면에 표시한다.
+
+<br />
+
+![webkit flow](/images/posts/web/fe-overview/4.png)
+브라우저가 문서를 파싱하여 렌더링하는 과정은 다음과 같다.
+
+1. 렌더링 엔진: HTML과 CSS 파싱 → DOM과 CSSOM 생성
+2. 렌더링 엔진: DOM과 CSSOM 결합 → 렌더 트리 생성
+3. 자바스크립트 엔진: JS 파싱 → AST(Abstract Syntax Tree) 생성 → 바이트코드로 변환 → 실행
+4. 렌더링 엔진: 렌더 트리를 기반으로 HTML 요소의 레이아웃 계산 및 페인팅
+
+브라우저에서 웹앱이 작동하는 원리를 알면 다양한 아키텍쳐(CSR, SSR, PWA 등)를 적절히 적용할 수 있고, 성능 최적화 및 디버깅하기 용이하다.
+
+### 주요 개념
+
+- 브라우저 렌더링 과정
+- 자바스크립트 엔진: JIT(Just In Time) 컴파일, 이벤트 루프와 콜백 큐
+- 브라우저 스토리지: 로컬 스토리지, 세션 스토리지, 쿠키
+- HTTP 프로토콜, CORS
+
+## 5. 최적화
+
+### 주요 개념
+
+- 성능 측정 도구: Lighthouse, FCP(First Contentful Paint)
+- Reflow, Repaint
+- 이미지 최적화: 이미지 포맷(Webp), Lazy Loading
+- 코드 스플리팅
+- 브라우저 캐싱
+
+## 맺으며
+
+기본적인 흐름만 훑어봤지만 개발-빌드-배포 사이에 테스트나 모니터링 과정이 추가되기도 한다.
+
+특히 테스트는 안정적인 웹 서비스 개발의 핵심이다.
+
+<br />
+
+결국 핵심은 브라우저에 웹 애플리케이션을 얼마나 빠르고 안전하게 제공할 수 있는가이다.
+웹 개발 기술이 발전함에 따라, 최근 프론트엔드 개발 동향은 성능 최적화와 사용자 경험 향상에 더욱 집중되고 있다.
+단순히 기능을 개발하는 것을 넘어, 유지보수와 확장 가능성을 고려하는 것이 웹 프론트엔드 개발자의 중요한 역량으로 자리 잡고 있는 것 같다.
