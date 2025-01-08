@@ -66,6 +66,10 @@
   @apply hidden;
 }
 
+.prose :where(ol):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  @apply my-1 !important;
+}
+
 .prose code {
   @apply font-mono;
 }
